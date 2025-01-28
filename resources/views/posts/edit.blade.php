@@ -21,6 +21,10 @@
                 <h2>本文</h2>
                 <input type='text' name='post[body]' value="{{ $post->body }}">
             </div>
+            <div class='content__URL'>
+                <h2>URL</h2>
+                <input type='text' name='post[url]' value="{{ $post->url }}">
+            </div>
             <input type="submit" value="保存">
         </form>
     </div>

@@ -18,6 +18,10 @@
                 <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。"></textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             </div>
+            <div class="URL">
+                <h2>URL</h2>
+                <textarea name="post[url]" placeholder="参考URL"></textarea>
+            </div>
             <input type="submit" value="store"/>
         </form>
         <div class="footer">

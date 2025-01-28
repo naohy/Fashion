@@ -20,6 +20,7 @@
                 <tr class="bg-gray-200">
                     <th class="px-4 py-2">ID</th>
                     <th class="px-4 py-2">本文</th>
+                    <th class="px-4 py-2">URL</th>
                     <th class="px-4 py-2">いいね</th>
                     <th class="px-4 py-2">操作</th>
                 </tr>
@@ -29,6 +30,7 @@
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
                         <td class="px-4 py-2">{{ $post->id }}</td>
                         <td class="px-4 py-2">{{ $post->body }}</td>
+                        <td class="px-4 py-2"><a href="{{ $post->url }}">{{ $post->url }}</a></td>
                         <td class="px-4 py-2">
                             <form action="{{ route('post.like', $post) }}" method="POST">
                                 @csrf
