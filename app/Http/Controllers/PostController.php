@@ -14,11 +14,17 @@ class PostController extends Controller
     }
     public function index(Post $post)
 {
-    return view('posts.index')->with(['posts' => $post->get()]);  
+    return view('posts.index')->with(['posts' => $post->get()]);
 }
 public function store(PostRequest $request, Post $post)
 {
     $input = $request['post'];
+
+    if (request('image')) {
+        $filename = request()->file('image')->getClientOriginalName();
+        $input['image'] = request('image')->storeAs('public/images', $filename);
+    }
+
     $post->fill($input)->save();
     //return redirect('/posts/' . $post->id);
     return redirect('/posts');
@@ -26,8 +32,13 @@ public function store(PostRequest $request, Post $post)
 public function update(PostRequest $request, Post $post)
 {
     $input_post = $request['post'];
-    $post->fill($input_post)->save();
 
+    if (request('image')) {
+        $filename = request()->file('image')->getClientOriginalName();
+        $input_post['image'] = request('image')->storeAs('public/images', $filename);
+    }
+
+    $post->fill($input_post)->save();
     //return redirect('/posts' . $post->id);
     return redirect('/posts');
 }
@@ -45,13 +56,13 @@ public function like(Post $post)
     {
         $user = auth()->user();
         $isLiked = $user->favorites()->where('post_id', $post->id)->exists();
- 
+
         if ($isLiked) {
             $user->favorites()->detach($post);
         } else {
             $user->favorites()->attach($post);
         }
- 
+
         return back();
     }
 }

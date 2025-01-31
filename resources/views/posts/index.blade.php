@@ -22,6 +22,7 @@
                     <th class="px-4 py-2">本文</th>
                     <th class="px-4 py-2">URL</th>
                     <th class="px-4 py-2">いいね</th>
+                    <th class="px-4 py-2">画像</th>
                     <th class="px-4 py-2">操作</th>
                 </tr>
             </thead>
@@ -31,6 +32,9 @@
                         <td class="px-4 py-2">{{ $post->id }}</td>
                         <td class="px-4 py-2">{{ $post->body }}</td>
                         <td class="px-4 py-2"><a href="{{ $post->url }}">{{ $post->url }}</a></td>
+                        <td class="px-4 py-2">
+                            <img src="{{ Storage::url($post->image)}}" width="200px">
+                        </td>
                         <td class="px-4 py-2">
                             <form action="{{ route('post.like', $post) }}" method="POST">
                                 @csrf
@@ -45,7 +49,7 @@
                         <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                              @csrf
                              @method('DELETE')
-                             <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
+                             <button type="button" onclick="deletePost({{ $post->id }})">delete</button>
                             </form>
                         </td>
                     </tr>
