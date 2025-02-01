@@ -21,8 +21,8 @@
                     <th class="px-4 py-2">ID</th>
                     <th class="px-4 py-2">本文</th>
                     <th class="px-4 py-2">URL</th>
-                    <th class="px-4 py-2">いいね</th>
                     <th class="px-4 py-2">画像</th>
+                    <th class="px-4 py-2">いいね</th>
                     <th class="px-4 py-2">操作</th>
                 </tr>
             </thead>

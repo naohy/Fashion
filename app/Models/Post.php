@@ -13,6 +13,7 @@ protected $fillable = [
     'title',
     'body',
     'url',
+    'image',
 ];
 public function followers()
 {
